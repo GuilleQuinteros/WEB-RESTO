@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/logo.ico">
+    <link rel="stylesheet" href="styles.css">
+    <title>Coronel  Milanesa - Restaurante</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#menu">Menú</a></li>
+                <li><a href="#reservas">Reservas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <img class="brand" src="img/logo.png" alt="Logo de la marca" width="80px" height="80px">
+            </ul>
+        </nav>
+    </header>
+    <a href="https://api.whatsapp.com/send?phone=+5493704013979" class="whatsapp-float" target="_blank">
+        <img src="img/icono-whatsapp.webp" alt="WhatsApp" width="100px" height="100px">
+      </a>
+    <section id="inicio">
+        <h1>Bienvenidos a Capitán Milanesa</h1>
+        <p>Servimos las mejores milanesas de la ciudad.</p>
+        <a href="#reservas" class="btn">Haz tu reserva</a>
+    </section>
+
+    <section id="menu">
+        <h2>Nuestro Menú</h2>
+        <div class="menu-item">
+            <h3>Milanesa Clásica</h3>
+            <p>Deliciosa milanesa de carne con papas fritas.</p>
+            <img src="img/carne con papas.webp" width="30%" height="30%">
+        </div>
+        <div class="menu-item">
+            <h3>Milanesa Napolitana</h3>
+            <p>Milanesa con salsa de tomate, queso y jamón.</p>
+            <img src="img/napo.webp" alt="napo" width="30%" height="30%">
+        </div>
+        <div class="menu-item">
+            <h3>Milanesa Caprese</h3>
+            <p>Milanesa con tomates, mozzarella y albahaca.</p>
+            <img src="img/caprese.jpg" alt="capo" width="30%" height="30%">
+        </div>
+    </section>
+
+    <section id="reservas">
+        <h2>Reserva una mesa</h2>
+        <p>Completa el siguiente formulario para reservar una mesa.</p>
+        <form>
+            <input type="text" placeholder="Nombre" required>
+            <input type="email" placeholder="Correo electrónico" required>
+            <input type="date" placeholder="Fecha" required>
+            <input type="time" placeholder="Hora" required>
+            <textarea placeholder="Mensaje"></textarea><br>
+            <button type="submit">Enviar reserva</button>
+        </form>
+    </section>
+    <section id="pedido">
+        <h2>Realiza tu pedido</h2>
+        <p>Completa el siguiente formulario para realizar tu pedido.</p>
+        <form id="order-form">
+            <input type="text" placeholder="Nombre" required>
+            <input type="email" placeholder="Correo electrónico" required>
+            <input type="tel" placeholder="Teléfono" required>
+            <input type="text" placeholder="Direccion" required>
+            <br>
+            <label for="menu-item">Selecciona tu pedido:</label><br>
+            <select id="menu-item" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Milanesa Clásica">Milanesa Clásica</option>
+                <option value="Milanesa Napolitana">Milanesa Napolitana</option>
+                <option value="Milanesa Caprese">Milanesa Caprese</option>
+            </select>
+            <button type="submit">Enviar pedido</button>
+        </form>
+    </section>
+
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <p>Para cualquier consulta, contáctanos en:</p>
+        <ul>
+            <li>Teléfono: 123-456-7890</li>
+            <li>Correo electrónico: info@capitanmilanesa.com</li>
+            <li>Dirección: Calle Principal 123, Ciudad</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Capitán Milanesa. Todos los derechos reservados.</p>
+        <a href="#inicio" class="back-to-top">Volver arriba</a>
+    </footer>
+<script src="scripts.js"></script>
+<script>
+    const backToTopLink = document.querySelector('.back-to-top');
+    backToTopLink.addEventListener('click', smoothScrollToTop);
+  
+    function smoothScrollToTop(event) {
+      event.preventDefault();
+  
+      const startPosition = window.pageYOffset;
+      const distance = 0 - startPosition;
+      const duration = 500;
+      let startTimestamp = null;
+  
+      function scrollToTop(timestamp) {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = timestamp - startTimestamp;
+        window.scrollTo(0, easeInOutCubic(progress, startPosition, distance, duration));
+        if (progress < duration) requestAnimationFrame(scrollToTop);
+      }
+  
+      function easeInOutCubic(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t * t + b;
+        t -= 2;
+        return c / 2 * (t * t * t + 2) + b;
+      }
+  
+      requestAnimationFrame(scrollToTop);
+    }
+  </script>
+</body>
+
+</html>
